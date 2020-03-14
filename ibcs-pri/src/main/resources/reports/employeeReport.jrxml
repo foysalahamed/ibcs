@@ -166,7 +166,7 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="34" splitType="Stretch">
+		<band height="21" splitType="Stretch">
 			<textField>
 				<reportElement x="0" y="0" width="72" height="20" uuid="cfc79631-262f-406d-a67c-11e882d55912">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="94612921-3ec1-43b8-a674-5e304830e12f"/>
@@ -273,9 +273,18 @@
 				<textFieldExpression><![CDATA[$F{birthdate}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="486" y="0" width="84" height="20" uuid="984826d7-3b52-4918-bf22-67066e10827a">
+				<reportElement x="486" y="0" width="69" height="20" uuid="984826d7-3b52-4918-bf22-67066e10827a">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="93f032fd-dd06-4a5e-9949-d73b01d9bc9a"/>
 				</reportElement>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Serif"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{gender}]]></textFieldExpression>
 			</textField>
 		</band>

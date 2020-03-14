@@ -33,11 +33,11 @@ public class Employee {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
-	@NotNull
-	@Size(max=5)
+	@NotNull(message="code field should be filled out")
+	@Size(max=5, message="your length should be max 5 characters")
 	private String code;
 	@NotNull
-	@Size(max=30)
+	@Size(max=30, message="your length should be max 30 characters")
 	private String name;
 	
 	
@@ -46,11 +46,10 @@ public class Employee {
 	
 	private Date dateOfBirth;
 	@NotNull
-	@Size(max=20)
+	@Size(max=20, message="your length should be max 20 characters")
 	private String designation;
 	private String basic;
-//	//@Enumerated(EnumType.STRING)
-//	private String gender;
+
 	private Gender gender;
 
 	@OneToOne
@@ -114,14 +113,6 @@ public class Employee {
 
 	
 
-//	public String getGender() {
-//		return gender;
-//	}
-//
-//	public void setGender(String gender) {
-//		this.gender = gender;
-//	}
-	
 
 	public Department getDepartment() {
 		return department;

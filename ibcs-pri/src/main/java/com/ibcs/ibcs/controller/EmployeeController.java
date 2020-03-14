@@ -53,44 +53,47 @@ public class EmployeeController {
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String addEmployeePost(  @Valid Employee employee, @ModelAttribute("employee") Employee emp,
+	public String addEmployeePost(  @Valid Employee employee,BindingResult bindingResult,
 			@ModelAttribute("birthdate")  String birthdate,
-			@ModelAttribute("gender")  String gender,
-			@ModelAttribute("joiningdate")  String   joiningdate,BindingResult bindingResult
+			@ModelAttribute("joiningdate")  String   joiningdate
 			
 			
-		) throws ParseException {
+		)  {
 
 		if (bindingResult.hasErrors()) {
 			
 			return "employee";
+//			return "redirect:employee/add";
 		}
 		else
 		{
 
         SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd hh:mm");
-		Date birthDate = format1.parse(birthdate);
-		Date joinDate = format1.parse(joiningdate);
-		employee.setDateOfBirth(birthDate);
-		employee.setJoiningDate(joinDate);
-		System.out.println(gender);
 		
-//			if(gender.equals(String.valueOf(Gender.FEMALE))) {
-//				employee.setGender(gender);
-//				System.out.println("Female:"+Gender.FEMALE);
-//			}
-//			else if(gender.equals(String.valueOf(Gender.MALE))) {
-//				employee.setGender(gender);
-//				System.out.println("Female:"+Gender.MALE);
-//				
-//			}
-	
-
-			employeeService.save(employee);
-
+		try {
+			Date birthDate;
+			birthDate = format1.parse(birthdate);
+			employee.setDateOfBirth(birthDate);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
-		return "redirect:employeeList";
+		try {
+			Date joinDate;
+			joinDate = format1.parse(joiningdate);
+			employee.setJoiningDate(joinDate);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+
+			employeeService.save(employee);
+			return "redirect:employeeList";
+		}
+		
+		
 	}
 	
 	@RequestMapping("/updateEmployee")

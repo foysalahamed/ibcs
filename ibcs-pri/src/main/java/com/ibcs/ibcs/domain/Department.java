@@ -20,11 +20,11 @@ public class Department {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	@NotNull
-	@Size(max=5)
+	@Size(max=5, message="your length should be max 5 characters")
 	private String code;
 	
 	@NotNull
-	@Size(max=30)
+	@Size(max=30, message="your length should be max 30 characters")
 	private String name;
 	private boolean active;
 	
