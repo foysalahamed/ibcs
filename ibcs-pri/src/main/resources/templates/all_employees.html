@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head th:replace="common/header :: common-header" />
+
+<body>
+	<div th:replace="common/header :: navbar" />
+
+	<div class="container">
+		<div class="table-responsive">
+			<table id="employeeListTable"
+				class="table table-bordered table-hover table-striped">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Code</th>
+						<th>Name</th>
+						<th>Joining Date</th>
+						<th>Date of Birth</th>
+						<th>Basic</th>
+						<th>Designation</th>
+						<th>Gender</th>
+						<th>Department</th>
+						<th>Update</th>
+						<th>Delete</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr data-th-each="employee : ${employeeList}">
+
+
+						<td th:text="${employee.id}"></td>
+						<td th:text="${employee.code}"></td>
+						<td th:text="${employee.name}"></td>
+						<td th:text="${employee.joiningDate}"></td>
+						<td th:text="${employee.dateOfBirth}"></td>
+						<td th:text="${employee.basic}"></td>
+						<td th:text="${employee.designation}"></td>
+						<td th:text="${employee.gender}"></td>
+						<td th:text="${employee.department.id}"></td>
+						<td><a th:href="@{/employee/updateEmployee(id=${employee.id})}"
+							class="btn btn-success btn-xs "> Update
+						</a></td>
+						<td><a th:href="@{/employee/remove(id=${employee.id})}"
+							class="btn btn-danger btn-xs "> Delete
+						</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+
+
+	<div th:replace="common/header :: body-bottom-scripts" />
+
+	<script>
+		$(document).ready(
+				function() {
+					$("#employeeListTable").DataTable(
+							{
+								"lengthMenu" : [ [ 5, 10, 15, 20, -1 ],
+										[ 5, 10, 15, 20, "All" ] ],
+								"ordering" : false,
+								stateSave : true
+							});
+				});
+	</script>
+</body>
+</html>

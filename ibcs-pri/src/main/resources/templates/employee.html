@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="common/header :: common-header" />
+<body roleId="pesignation-top" data-spy="scroll"
+	data-target=".navbar-fixed-top">
+<head th:replace="common/header :: navbar" />
+<div class="container">
+	<div class="row main">
+
+		<div class="panel-title text-center">
+			<h1 class="title">Add Employee</h1>
+			<hr />
+		</div>
+
+		<div class="main-login main-center">
+			<!--th:object="${employee}"  -->
+			<form class="form-horizontal" method="post"
+				th:action="@{/employee/add}" th:object="${employee}">
+
+				<input type="hidden" name="id" th:value="${employee.id}" />
+				<div class="form-group">
+					<label for="code" class="cols-sm-2 control-label">Code</label>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa- fa"
+								aria-hidden="true"></i></span> <input type="text" class="form-control"
+								id="code" name="code" roleId="code" th:value="${employee.code}"
+								placeholder="Code" required="required" />
+						</div>
+						 <div>
+							<span th:if="${#fields.hasErrors('code')}" th:errors="*{code}" style="color: red;">Code Error></span>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="EmployeeName" class="cols-sm-2 control-label">Employee
+						Name</label>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa- fa"
+								aria-hidden="true"></i></span> <input type="text" class="form-control"
+								id="name" name="name" roleId="name" th:value="${employee.name}"
+								placeholder="Enter Employee Name" required="required" />
+						</div>
+						 <div>
+							<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+								style="color: red;">Name Error></span>
+						</div>
+					</div>
+				</div>
+
+				<!-- th:value="${joiningdate}" -->
+				 <div class="form-group">
+					<label for="joiningDate">Joining Date:</label>
+					<div class="input-append date form_datetime input-group"
+						data-date="2019-10-21T15:25:00Z">
+						<input class="form-control" type="text" 
+							 readonly="readonly"
+							name="joiningdate" id="joiningdate" th:value="${joiningdate}" required="required" /> <span
+							class="input-group-addon"><i class="fa fa-times"
+							aria-hidden="true"></i></span> <span class="input-group-addon"><i
+							class="fa fa-calendar" aria-hidden="true"></i></span>
+					</div>
+				</div>  
+				<!--  -->
+				<div class="form-group">
+					<label for="dateOfBirth">Date of Birth:</label>
+					<div class="input-append date form_datetime input-group"
+						data-date="2019-10-21T15:25:00Z">
+						<input class="form-control" type="text" 
+							 readonly="readonly"
+							name="birthdate" id="birthdate"  th:value="${birthdate}" required="required" /> <span
+							class="input-group-addon"><i class="fa fa-times"
+							aria-hidden="true"></i></span> <span class="input-group-addon"><i
+							class="fa fa-calendar" aria-hidden="true"></i></span>
+					</div>
+				</div> 
+ 
+				<!-- 
+				 <input type="date" class="form-control" 
+					placeholder="Project start"  th:field="*{dateOfBirth}"  />
+					
+					<input type="date" class="form-control" 
+					th:field="*{joiningDate}"/>  -->
+					
+				
+
+				<div class="form-group">
+					<label for="designation" class="cols-sm-2 control-label">Designation</label>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa- fa"
+								aria-hidden="true"></i></span> <input type="text" class="form-control"
+								id="designation" name="designation"
+								th:value="${employee.designation}" roleId="designation"
+								placeholder="Designation" required="required" />
+						</div>
+						 <div>
+							<span th:if="${#fields.hasErrors('designation')}"
+								th:errors="*{designation}" style="color: red;">Designation
+								Error></span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="basic" class="cols-sm-2 control-label">Basic</label>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa- fa"
+								aria-hidden="true"></i></span> <input type="text" class="form-control"
+								id="basic" name="basic" roleId="basic"
+								th:value="${employee.basic}" placeholder="Basic "
+								required="required" />
+						</div>
+					</div>
+				</div>
+
+
+				 <!-- Select Basic -->
+				<!--<div class="form-group">
+					<label for="sex" class="cols-sm-2 control-label">Gender</label>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa- fa"
+								aria-hidden="true"></i></span> <select id="gender" name="gender"
+								class="form-control" th:value="${gender}">
+								<option value="Male">Male</option>
+								<option value="Female">Female</option>
+
+							</select>
+						</div>
+					</div>
+				</div> -->
+				
+				<div class="form-group">
+					<label for="sex" class="cols-sm-2 control-label">Gender</label>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa- fa"
+								aria-hidden="true"></i></span> <select id="gender" name="gender"
+								class="form-control" th:field="*{gender}">
+								<option th:each="gendertype:${genderstype}"
+									th:text="${gendertype}"
+									th:value="${gendertype}"
+								value="Male">Male</option>
+								<option value="Female">Female</option>
+
+							</select>
+						</div>
+					</div>
+				</div>
+
+
+				<!-- Select Basic th:value="${department.id}" -->
+
+
+
+				<div class="form-group">
+					<label for="department" class="cols-sm-2 control-label">Department</label>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa fa"
+								aria-hidden="true"></i></span> <select id="department"
+								class="form-control" th:name="department"
+								 required="required">
+								<option value="" disabled="disabled">Please select an
+									option</option>
+								<option th:each="department : ${departmentList}"
+									th:text="${department.name}"
+									th:value="${department.id}"
+									th:selected="(${department.id}==${department.id})"></option>
+							</select>
+						</div>
+					</div>
+				</div>
+
+
+
+
+
+
+
+				<div class="form-group ">
+					<button type="submit"
+						class="btn btn-primary btn-lg btn-block login-button">Add
+						Employee</button>
+				</div>
+
+
+
+
+			</form>
+		</div>
+	</div>
+</div>
+
+
+
+<div th:replace="common/header :: body-bottom-scripts" />
+
+</body>
+</html>

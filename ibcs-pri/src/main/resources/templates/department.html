@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="common/header :: common-header" />
+<body roleId="pdesignation-top" data-spy="scroll"
+	data-target=".navbar-fixed-top">
+<head th:replace="common/header :: navbar" />
+<div class="container">
+	<div class="row main">
+
+		<div class="panel-title text-center">
+			<h1 class="title">Add Department</h1>
+			<hr />
+		</div>
+
+		<div class="main-login main-center">
+			<form class="form-horizontal" method="post"
+				th:action="@{/department/add}" th:object="${department}">
+
+				<input type="hidden" name="id" th:value="${department.id}"/>
+				<div class="form-group">
+					<label for="code" class="cols-sm-2 control-label">Code</label>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i
+								class="fa fa-dept fa" aria-hidden="true"></i></span> <input
+								type="text" class="form-control" id="code" name="code"
+								roleId="code" placeholder="Code" th:value="${department.code}" required="required" /> 
+						
+						</div>
+						<div>
+							<span th:if="${#fields.hasErrors('code')}" th:errors="*{code}" style="color: red;">Code Error></span>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="DepartmentName" class="cols-sm-2 control-label">Department
+						Name</label>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa- fa"
+								aria-hidden="true"></i></span> <input type="text" class="form-control"
+								id="name" name="name" roleId="name"
+								placeholder="Department Name" th:value="${department.name}" required="required" />
+						</div>
+						<div>
+							<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red;">Name Error></span>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+						<label class="col-md-2 control-label" for="status"></label>
+						<div class="col-md-8">
+							<label><input value="true" type="radio" name="active"
+								checked="checked" /> Active or </label> <label><input
+								value="false" type="radio" name="active" />
+								Inactive </label> 
+						</div>
+					</div>
+
+
+
+
+
+
+
+
+				<div class="form-group ">
+					<button type="submit"
+						class="btn btn-primary btn-lg btn-block login-button">Add
+						Department</button>
+				</div>
+
+
+
+
+			</form>
+		</div>
+	</div>
+</div>
+
+
+
+<div th:replace="common/header :: body-bottom-scripts" />
+
+</body>
+</html>
