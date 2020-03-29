@@ -111,10 +111,17 @@
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa- fa"
 								aria-hidden="true"></i></span> <input type="text" class="form-control"
-								id="basic" name="basic" roleId="basic"
+								id="checkBasicSalary" name="basic" roleId="basic"
 								th:value="${employee.basic}" placeholder="Basic "
 								required="required" />
 						</div>
+						
+						
+					</div>
+					 <div>
+							<span th:if="${#fields.hasErrors('basic')}" th:errors="*{basic}"
+								style="color: red;">Basic Error></span>
+								<span id="basicSalary" style="color: red;"></span>
 					</div>
 				</div> 
 
@@ -171,11 +178,11 @@
 
 
 				<div class="form-group ">
-					<button type="submit"
+					<button type="submit" id="showMessage" 
 						class="btn btn-primary btn-lg btn-block login-button">Add
 						Employee</button>
 				</div>
-
+<div id="showmessage">Successfully Saved Fee.</div>
 
 
 
@@ -188,5 +195,6 @@
 
 <div th:replace="common/header :: body-bottom-scripts" />
 
+<script th:src="@{/js/scriptsvalidation.js}"></script>
 </body>
 </html>

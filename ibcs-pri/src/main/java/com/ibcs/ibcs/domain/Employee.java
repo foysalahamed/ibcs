@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlElement;
@@ -48,7 +49,8 @@ public class Employee {
 	@NotNull
 	@Size(max=20, message="your length should be max 20 characters")
 	private String designation;
-	private String basic;
+	 @Min(value=18, message="must be equal or greater than 18")  
+	private int basic;
 
 	private Gender gender;
 
@@ -103,16 +105,14 @@ public class Employee {
 		this.designation = designation;
 	}
 
-	public String getBasic() {
+	
+	public int getBasic() {
 		return basic;
 	}
 
-	public void setBasic(String basic) {
+	public void setBasic(int basic) {
 		this.basic = basic;
 	}
-
-	
-
 
 	public Department getDepartment() {
 		return department;
