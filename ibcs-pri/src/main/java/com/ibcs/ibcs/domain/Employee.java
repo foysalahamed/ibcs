@@ -49,7 +49,7 @@ public class Employee {
 	@NotNull
 	@Size(max=20, message="your length should be max 20 characters")
 	private String designation;
-	 @Min(value=18, message="must be equal or greater than 18")  
+	
 	private int basic;
 
 	private Gender gender;

@@ -41,9 +41,14 @@
 						<td><a th:href="@{/employee/updateEmployee(id=${employee.id})}"
 							class="btn btn-success btn-xs "> Update
 						</a></td>
-						<td><a th:href="@{/employee/remove(id=${employee.id})}"
+						<!-- <td><a th:href="@{/employee/remove(id=${employee.id})}"
 							class="btn btn-danger btn-xs "> Delete
-						</a></td>
+						</a></td> -->
+						<td>
+							<!-- <input hidden="hidden" name="id" th:value="${employee.id}" /> -->
+							<button th:id="${employee.id}" class="btn btn-danger btn-xs delete-employee" type="submit" value="delete" >
+							<span class="fa fa-times"></span>Delete</button>
+						</td>
 					</tr>
 				</tbody>
 			</table>
