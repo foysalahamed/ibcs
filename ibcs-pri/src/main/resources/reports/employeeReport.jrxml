@@ -10,7 +10,7 @@
 	<field name="joiningdate" class="java.sql.Timestamp"/>
 	<field name="birthdate" class="java.sql.Timestamp"/>
 	<field name="designation" class="java.lang.String"/>
-	<field name="basic" class="java.lang.String"/>
+	<field name="basic" class="java.lang.Integer"/>
 	<field name="department" class="java.lang.String"/>
 	<field name="gender" class="java.lang.Object"/>
 	<background>
